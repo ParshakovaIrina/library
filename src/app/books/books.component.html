@@ -2,16 +2,18 @@
 <div class="main">
 <div class="main-table">
 <ul class="books">
-  <li *ngFor="let book of books"  
-  [class.selected]="book === selectedBook" 
-  (click)="onSelect(book)">
+  <li *ngFor="let book of books">
+  <!--[class.selected]="book === selectedBook" 
+  (click)="onSelect(book)">-->
+  <a routerLink="/detail/{{book.id}}">
      {{book.name}}
+    </a>
   </li>
 </ul>
 </div>
 
 <div class="main-description">
-<app-description [book]="selectedBook"></app-description>
+<!--<app-description [book]="selectedBook"></app-description>-->
 
 </div>
 </div>
