@@ -1,22 +1,31 @@
 
 <div class="main">
-<div class="main-table">
-<ul class="books">
-  <li *ngFor="let book of books">
-  <!--[class.selected]="book === selectedBook" 
-  (click)="onSelect(book)">
- [book]="selectedBook"
-<app-ediing></app-ediing>
--->
-  <a routerLink="/detail/{{book.id}}">
-     {{book.name}}
-    </a>
-  </li>
-</ul>
-</div>
+    <div class="main-table">
+            <h1>Моя библиотека</h1>
+        <table class="main-table-books">
+                        <tr>
+                            <th>Название</th>
+                            <th>Автор</th>
+                            <th>Год</th>
+                            <th>Жанр</th>
+                        </tr>
+<tbody>
+                        <tr *ngFor="let book of books">
+                        <!--[class.selected]="book === selectedBook" 
+                        (click)="onSelect(book)">
+                      [book]="selectedBook"
+                      <app-ediing></app-ediing>
+                      -->
+                            <td><a class="main-link" routerLink="/detail/{{book.id}}"> {{book.name}}  </a> </td>
+                            <td> {{book.name}} </td>
+                            <td> {{book.id}}</td>
+                            <td> {{book.name}} </td>
+                        </tr>
+</tbody>
+        </table>
+    </div>
 
-<div class="main-description">
- 
-
-</div>
+    <div class="main-description">
+        <img src="../../assets/7.jpg" alt="Alt">
+    </div>
 </div>

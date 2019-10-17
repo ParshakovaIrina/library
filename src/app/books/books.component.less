@@ -1,13 +1,49 @@
+
 .main{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
 
-}
-.main-table{
-    width: 20%;
+    &-table{
+        width: 45%;
+        border-collapse: collapse;
+            h1{
+                text-align: center;
+            }
+            
+        &-books{
+            width: 100%;
+            td{
+                width: 25%;
+                text-align: center;
+               // border: 2px black solid;
+            }
+            }
+           tbody tr:hover {
+                background-color: rgba(59, 4, 4, 0.26)
+            }
+    }
+
+    &-link{
+        color: black;
+        text-decoration: none;
+    }
+
+    &-description{
+        width: 45%;
+        position: relative;
+    
+            img{
+                padding-left: 20%;
+                position: absolute;
+                height:100%;
+            }
+    }
+
 }
 
-.main-description{
-    width: 80%;
-}
+
+
+
+
+
