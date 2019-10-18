@@ -7,12 +7,14 @@
           </div>
 
         <div class="main-descr">
-        <h2>{{book.name | uppercase}} </h2>
+          <div class="main-descr-top">
+            <h2>{{book.name | uppercase}} </h2>
+            <button class="bu" routerLink="/editing/{{book.id}}"><img class="butt" src="../../assets/mb.webp"> </button>
+          </div>
         <div><span>author: </span>{{book.name}}</div>
         <div><span>year: </span>{{book.id}}</div>
         <div><span>description: </span> quidem temporibus, tenetur, officia esse incidunt ipsum repellendus quis qui ullam aspernatur totam commodi! Voluptates temporibus incidunt ipsa aut tenetur nulla, ab ipsum architecto fuga mollitia, reiciendis aliquam ex assumenda magnam dolorem laboriosam odio earum ea. Architecto a vitae quisquam. Voluptates nobis dolorum a debitis voluptate assumenda soluta repellendus enim aut saepe quod est ducimus recusandae, incidunt perferendis? Reprehenderit officiis cum maiores ea doloremque doloribus dolor quidem magnam natus, ad laudantium? Minus dolore error aperiam in odit, reiciendis qui repudiandae illum perferendis culpa, voluptatum corporis. Distinctio, ducimus. Voluptatibus voluptate est, sit laborum fugit officiis odio illum nisi non aperiam nesciunt, ex explicabo modi architecto aliquam ea dicta neque consequatur quisquam accusantium laboriosam! Veniam, ea repellendus magni dolorum illo in, incidunt aperiam harum magnam debitis alias temporibus reiciendis hic ab obcaecati optio fugiat possimus libero itaque. Eaque dignissimos, illum ipsa labore nostrum, fugiat doloribus debitis commodi repudiandae officia ex, omnis voluptatum repellendus reiciendis esse voluptatibus. Saepe accusamus possimus deserunt! Aut eveniet quod dolor perferendis ea obcaecati, distinctio veniam reprehenderit beatae facere blanditiis odit tenetur facilis fuga soluta! Consequuntur, officiis.</div>
         <button (click)="goBack()">go back</button>
-        <button routerLink="/editing/{{book.id}}">editing</button>
       </div>
   
   </div>  
