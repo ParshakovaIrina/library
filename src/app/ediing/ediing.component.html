@@ -9,19 +9,21 @@
               </label>
             </div>
             <div>  <label>Автор:
-                <input class="main-input" [(ngModel)]="book.name" placeholder="name"/>
+                <input class="main-input" [(ngModel)]="book.author" placeholder="name"/>
               </label></div>
             <div> <label>Год:
-                <input class="main-input" [(ngModel)]="book.id" placeholder="name"/>
+                <input class="main-input" [(ngModel)]="book.year" placeholder="name"/>
               </label></div>
               <div> <label>Жанр:
-                  <input class="main-input" [(ngModel)]="book.id" placeholder="name"/>
+                  <input class="main-input" [(ngModel)]="book.genre" placeholder="name"/>
                 </label></div>
     </div>
     <div class="edi-top-image">
         <img class="main-img" src="../assets/7.jpg">
       </div>
   </div>
-    <div><span>description: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid eveniet pariatur rem unde dolores minima laudantium delectus autem! Asperiores a, sunt cupiditate quidem temporibus, tenetur, officia esse incidunt ipsum repellendus quis qui ullam aspernatur totam commodi! Voluptates temporibus incidunt ipsa aut tenetur nulla, ab ipsum architecto fuga mollitia, reiciendis aliquam ex assumenda magnam dolorem laboriosam odio earum ea. Architecto a vitae quisquam. Voluptates nobis dolorum a debitis voluptate assumenda soluta repellendus enim aut saepe quod est ducimus recusandae, incidunt perferendis? Reprehenderit officiis cum maiores ea doloremque doloribus dolor quidem magnam natus, ad laudantium? Minus dolore error aperiam in odit, reiciendis qui repudiandae illum perferendis culpa, voluptatum corporis. Distinctio, ducimus. Voluptatibus voluptate est, sit laborum fugit officiis odio illum nisi non aperiam nesciunt, ex explicabo modi architecto aliquam ea dicta neque consequatur quisquam accusantium laboriosam! Veniam, ea repellendus magni dolorum illo in, incidunt aperiam harum magnam debitis alias temporibus reiciendis hic ab obcaecati optio fugiat possimus libero itaque. Eaque dignissimos, illum ipsa labore nostrum, fugiat doloribus debitis commodi repudiandae officia ex, omnis voluptatum repellendus reiciendis esse voluptatibus. Saepe accusamus possimus deserunt! Aut eveniet quod dolor perferendis ea obcaecati, distinctio veniam reprehenderit beatae facere blanditiis odit tenetur facilis fuga soluta! Consequuntur, officiis.</div>
-    <button (click)="goBack()">Save</button>
+  <div> <label>Описание:
+      <input  [(ngModel)]="book.description" placeholder="name"/>
+    </label></div>
+  <button (click)="goBack()">Save</button>
 </div>
