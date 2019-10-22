@@ -5,25 +5,27 @@
     <div class="edi-top-text">
             <div>
               <label>Название:
-                <input  class="main-input" [(ngModel)]="book.name" placeholder="name"/>
+                <input class="main-input" size="30" [(ngModel)]="book.name" placeholder="name"/>
               </label>
             </div>
-            <div>  <label>Автор:
-                <input class="main-input" [(ngModel)]="book.author" placeholder="name"/>
+            <div>  <label>Автор   :
+                <input class="main-input" size="30" [(ngModel)]="book.author" placeholder="name"/>
               </label></div>
             <div> <label>Год:
-                <input class="main-input" [(ngModel)]="book.year" placeholder="name"/>
+                <input class="main-input" size="30" [(ngModel)]="book.year" placeholder="name"/>
               </label></div>
               <div> <label>Жанр:
-                  <input class="main-input" [(ngModel)]="book.genre" placeholder="name"/>
+                  <input class="main-input" size="30" [(ngModel)]="book.genre" placeholder="name"/>
                 </label></div>
+                
     </div>
     <div class="edi-top-image">
-        <img class="main-img" src="../assets/7.jpg">
+        <img class="main-img" src="{{book.id}}">
       </div>
   </div>
-  <div> <label>Описание:
-      <input  [(ngModel)]="book.description" placeholder="name"/>
-    </label></div>
-  <button (click)="goBack()">Save</button>
+  <div class="descript"> 
+      <textarea class="descript-size" rows="15" [(ngModel)]="book.description" placeholder="name"></textarea>
+  </div>
+  <button (click)="goBack()">Обратно</button>
+  <button (click)="mb()" routerLink="/detail/{{book.name}}">Сохранить</button>
 </div>

@@ -3,19 +3,20 @@
   <div class="main">
 
           <div class="main-img">
-              <img src="../assets/7.jpg">
+              <img src="{{book.id}}">
           </div>
 
         <div class="main-descr">
           <div class="main-descr-top">
-            <h2>{{book.name | uppercase}} </h2>
-            <button class="bu" routerLink="/editing/{{book.id}}"><img class="butt" src="../../assets/mb.webp"> </button>
+            <h2>{{book.name | uppercase}} </h2> 
+            <button class="bu" routerLink="/editing/{{book.name}}"><img class="butt" src="../../assets/mb.webp"> </button>
+            <button class="bu"  routerLink="/books"><img class="butt" src="../../assets/delete.png"> </button>
           </div>
-        <div><span>Автор: </span>{{book.author}}</div>
-        <div><span>Год: </span>{{book.year}}</div>
-        <div><span>Жанр: </span>{{book.genre}}</div>
+        <div><span class="main-descr-name">Автор: </span>{{book.author}}</div>
+        <div><span class="main-descr-name">Год: </span>{{book.year}}</div>
+        <div><span class="main-descr-name">Жанр: </span>{{book.genre}}</div>
         <div>{{book.description}} </div>
-        <button (click)="goBack()">go back</button>
+        <button routerLink="/books">go back</button>
       </div>
   
   </div>  

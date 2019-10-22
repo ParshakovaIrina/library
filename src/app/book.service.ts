@@ -9,10 +9,10 @@ import { BOOKS } from './example-books';
 export class BookService {
  
   constructor() { }
-  getBook(id: number): Observable<Book> {
+  //getBook(id: number): Observable<Book> {
     
-    return of(BOOKS.find(book => book.id === id));
-  }
+   // return of(BOOKS.find(book => book.id === id));
+  //}
   getBooks(): Observable<Book[]> {
     
     return of(BOOKS);

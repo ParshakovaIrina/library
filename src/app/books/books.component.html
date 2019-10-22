@@ -10,13 +10,20 @@
                             <th>Жанр</th>
                         </tr>
 <tbody>
-                        <tr *ngFor="let book of books">
-                        <!--[class.selected]="book === selectedBook" 
+                        <tr >
+                        <!--*ngFor="let book of books"
+                            
+                            [class.selected]="book === selectedBook" 
                         (click)="onSelect(book)">
                       [book]="selectedBook"
                       <app-ediing></app-ediing>
+
+                      <a class="main-link" routerLink="/detail/{{book.id}}">
                       -->
-                            <td><a class="main-link" routerLink="/detail/{{book.id}}"> {{book.name}}  </a> </td>
+                           
+                      
+                      
+                      <td> <a class="main-link" routerLink="/detail/{{book.name}}"> {{book.name}}  </a></td>
                             <td> {{book.author}} </td>
                             <td> {{book.year}}</td>
                             <td> {{book.genre}} </td>

@@ -10,20 +10,28 @@ import {BookService }  from '../book.service';
   styleUrls: ['./description.component.less']
 })
 export class DescriptionComponent implements OnInit {
-  @Input() book: Book;
-  
+ // @Input() book: Book;
+  book=JSON.parse(localStorage.getItem("myKey"));
+
   constructor( private route: ActivatedRoute,
     private bookService: BookService,
     private location: Location) { }
 
     ngOnInit(): void {
-      this.getBook();
+      //this.getBook();
     }
     
+
     getBook(): void {
-      const id = +this.route.snapshot.paramMap.get('id');
-      this.bookService.getBook(id)
-        .subscribe(book => this.book = book);
+      const name = +this.route.snapshot.paramMap.get('name');
+      //this.bookService.getBook(name)
+      //  .subscribe(book => this.book = book);
+    }
+    // //сериализуем его
+    deleteBook(): void {
+      var serialObj = JSON.stringify(this.book);
+    localStorage.setItem("myKey", serialObj);
+    localStorage.removeItem("myKey");
     }
     goBack(): void {
       this.location.back();
