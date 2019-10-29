@@ -11,8 +11,8 @@ import { BookService } from '../book.service';
 export class BooksComponent implements OnInit {
   //books= BOOKS;
   selectedBook: Book;
-  book = JSON.parse(localStorage.getItem("myKey"));
-  
+ 
+  books = JSON.parse(localStorage.getItem("myKey"));
 
   constructor(private bookService: BookService) { }
   
@@ -21,7 +21,7 @@ export class BooksComponent implements OnInit {
   }
   getBooks(): void {
     this.bookService.getBooks()
-   // .subscribe(books => this.books = books);
+    .subscribe(books => this.books = books);
   }
 
   onSelect(book: Book): void {

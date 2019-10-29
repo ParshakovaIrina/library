@@ -20,12 +20,14 @@
                 
     </div>
     <div class="edi-top-image">
-        <img class="main-img" src="{{book.id}}">
+        <img class="main-img" src="{{book.image}}">
       </div>
   </div>
   <div class="descript"> 
       <textarea class="descript-size" rows="15" [(ngModel)]="book.description" placeholder="name"></textarea>
   </div>
-  <button (click)="goBack()">Обратно</button>
-  <button (click)="mb()" routerLink="/detail/{{book.name}}">Сохранить</button>
+  <div class="butt">
+  <button class="butt-desing" (click)="goBack()">Обратно</button>
+  <button class="butt-desing" (click)="mb()" routerLink="/detail/{{book.id}}">Сохранить</button>
+  </div>
 </div>

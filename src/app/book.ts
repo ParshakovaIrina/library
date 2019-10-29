@@ -5,4 +5,5 @@ export class Book {
     year: number;
     genre: string;
     description: string;
+    image:string;
 }

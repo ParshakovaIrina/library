@@ -9,23 +9,25 @@ import {BookService }  from '../book.service';
   styleUrls: ['./ediing.component.less']
 })
 export class EdiingComponent implements OnInit {
-  //@Input() book: Book;
-  book=JSON.parse(localStorage.getItem("myKey"));
+  @Input() book: Book;
+  books=JSON.parse(localStorage.getItem("myKey"));
+
   constructor(private route: ActivatedRoute,
     private bookService: BookService,
     private location: Location) { }
 
   
     ngOnInit(): void {
-     // this.getBook();
+      this.getBook();
     }
     mb(): void{
       //this.book.name=document.getElementById("input-id").value;
-      localStorage.myKey = JSON.stringify(this.book);
+      localStorage.myKey = JSON.stringify(this.books);
     }
 
     getBook(): void {
-      const name = +this.route.snapshot.paramMap.get('name');
+      const name = +this.route.snapshot.paramMap.get('id');
+      this.book=this.books[name];
      // this.bookService.getBook(name)
      //   .subscribe(book => this.book = book);
     }

@@ -1,16 +1,18 @@
 
 <!--<div *ngIf="book">-->
-  <div class="main">
+   <div class="main">
 
           <div class="main-img">
-              <img src="{{book.id}}">
+              <img src="{{book.image}}">
           </div>
 
         <div class="main-descr">
           <div class="main-descr-top">
-            <h2>{{book.name | uppercase}} </h2> 
-            <button class="bu" routerLink="/editing/{{book.name}}"><img class="butt" src="../../assets/mb.webp"> </button>
-            <button class="bu"  routerLink="/books"><img class="butt" src="../../assets/delete.png"> </button>
+           <div> <h2>{{book.name | uppercase}} </h2> </div>
+            <div class="main-descr-top-but">
+            <button class="bu" routerLink="/editing/{{book.id}}"><img class="butt" src="../../assets/mb.webp"> </button> 
+        <button class="bu"  routerLink="/books"><img class="butt" src="../../assets/delete.png"> </button>
+      </div>
           </div>
         <div><span class="main-descr-name">Автор: </span>{{book.author}}</div>
         <div><span class="main-descr-name">Год: </span>{{book.year}}</div>
@@ -21,5 +23,5 @@
   
   </div>  
 
- <!-- </div>-->
+  
  
