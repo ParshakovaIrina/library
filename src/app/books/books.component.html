@@ -1,36 +1,32 @@
 
 <div class="main">
     <div class="main-table">
-            <h1>Моя библиотека</h1>
-        <table class="main-table-books">
-                        <tr>
-                            <th>Название</th>
-                            <th>Автор</th>
-                            <th>Год</th>
-                            <th>Жанр</th>
-                        </tr>
-<tbody>
-                        <tr *ngFor="let book of books">
-                        <!--*ngFor="let book of books"
-                            
-                            [class.selected]="book === selectedBook" 
-                        (click)="onSelect(book)">
-                      [book]="selectedBook"
-                      <app-ediing></app-ediing>
+      <div class="main-table-name">
+            <h1 class="main-table-name-text">Моя библиотека</h1>
+            <button class="main-table-name-butt"  routerLink="/books"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
+            </button>
+      </div>
 
-                      <a class="main-link" routerLink="/detail/{{book.id}}">
-                      -->
-                      <td> <a class="main-link" routerLink="/detail/{{book.id}}"> {{book.name}}  </a></td>
-                            <td> {{book.author}} </td>
-                            <td> {{book.year}}</td>
-                            <td> {{book.genre}} </td>
-                        </tr>
-                        
-</tbody>
-        </table>
+      <div class="main-table-top">
+        <p class="main-table-body-cell">Название</p>
+        <p class="main-table-body-cell">Автор</p>
+        <p class="main-table-body-cell">Год</p>
+        <p class="main-table-body-cell">Жанр</p>
+      </div>
+
+      <div *ngFor="let book of books" [class.selected]="book === selectedBook"(mouseenter)="onSelect(book)">
+        <div class="main-table-body">
+          <p class="main-table-body-cell"> <a class="main-link" routerLink="/detail/{{book.id}}"> {{book.name}}  </a></p>
+          <p class="main-table-body-cell"> {{book.author}} </p>
+          <p class="main-table-body-cell"> {{book.year}}</p>
+          <p class="main-table-body-cell"> {{book.genre}} </p>
+        </div>
+      </div>
+
     </div>
 
-    <div class="main-description">
-        <img src="../../assets/7.jpg" alt="Alt">
-    </div>
+  <div class="main-img" *ngIf="selectedBook">
+      <img src="{{selectedBook.image}}">
+  </div>
+
 </div>

@@ -11,11 +11,10 @@ import { BookService } from '../book.service';
 export class BooksComponent implements OnInit {
   //books= BOOKS;
   selectedBook: Book;
- 
   books = JSON.parse(localStorage.getItem("myKey"));
 
   constructor(private bookService: BookService) { }
-  
+
   ngOnInit() {
     this.getBooks();
   }
