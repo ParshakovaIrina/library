@@ -16,7 +16,7 @@ export class EdiingComponent implements OnInit {
     private bookService: BookService,
     private location: Location) { }
 
-  
+
     ngOnInit(): void {
       this.getBook();
     }

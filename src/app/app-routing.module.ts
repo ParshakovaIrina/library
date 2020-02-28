@@ -6,9 +6,10 @@ import { EdiingComponent }  from './ediing/ediing.component';
 import { BooksComponent }  from './books/books.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'books', pathMatch: 'full'},
   { path: 'detail/:id', component: DescriptionComponent},
   { path: 'editing/:id', component: EdiingComponent},
-    {path: 'books', component: BooksComponent }
+  {path: 'books', component: BooksComponent }
 ];
 
 @NgModule({
