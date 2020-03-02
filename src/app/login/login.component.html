@@ -1,0 +1,20 @@
+<div class="login-background">
+  <div class="background-u">
+    <h1 (click)="go()" class="go">Вход</h1><h1>/</h1><h1 (click)="regict()" class="goo">Регистрация</h1>
+      <form [formGroup]="buyTicketForm" >
+        <div>
+          <label>Имя:</label>
+          <input type="text" formControlName="passenger" />
+        </div>
+
+      <div>
+        <label>Пароль:</label>
+        <input type="text" formControlName="passengerAge" />
+      </div>
+    </form>
+    <div class="butt">
+      <button class="desing"  id="op" routerLink="/books">Вход</button>
+      <button class="desing"  id="opp" routerLink="/books">Регистрация</button>
+    </div>
+  </div>
+</div>

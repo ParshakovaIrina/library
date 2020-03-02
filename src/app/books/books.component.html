@@ -8,20 +8,21 @@
       </div>
 
       <div class="main-table-top">
-        <p class="main-table-body-cell">Название</p>
-        <p class="main-table-body-cell">Автор</p>
-        <p class="main-table-body-cell">Год</p>
-        <p class="main-table-body-cell">Жанр</p>
+        <p class="main-table-body-cell iu">Название</p>
+        <p class="main-table-body-cell iu">Автор</p>
+        <p class="main-table-body-cell ui">Год</p>
+        <p class="main-table-body-cell ui">Жанр</p>
       </div>
-
+<div class="procrutka">
       <div *ngFor="let book of books" [class.selected]="book === selectedBook"(mouseenter)="onSelect(book)">
         <div class="main-table-body">
-          <p class="main-table-body-cell"> <a class="main-link" routerLink="/detail/{{book.id}}"> {{book.name}}  </a></p>
-          <p class="main-table-body-cell"> {{book.author}} </p>
-          <p class="main-table-body-cell"> {{book.year}}</p>
-          <p class="main-table-body-cell"> {{book.genre}} </p>
+          <p class="main-table-body-cell iu"> <a class="main-link" routerLink="/detail/{{book.id}}"> {{book.name}}  </a></p>
+          <p class="main-table-body-cell iu"> {{book.author}} </p>
+          <p class="main-table-body-cell ui"> {{book.year}}</p>
+          <p class="main-table-body-cell ui"> {{book.genre}} </p>
         </div>
       </div>
+</div>
 
     </div>
 
