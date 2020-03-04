@@ -1,20 +1,21 @@
 <div class="login-background">
   <div class="background-u">
-    <h1 (click)="go()" class="go">Вход</h1><h1>/</h1><h1 (click)="regict()" class="goo">Регистрация</h1>
-      <form [formGroup]="buyTicketForm" >
-        <div>
-          <label>Имя:</label>
-          <input type="text" formControlName="passenger" />
-        </div>
+    <h1 (click)="toggleMode()" class="go">Вход</h1>
+    <span>/</span>
+    <h1 (click)="toggleMode()" class="goo">Регистрация</h1>
+    <form [formGroup]="buyTicketForm">
+      <div>
+        <label>Имя:</label>
+        <input type="text" formControlName="login"/>
+      </div>
 
       <div>
         <label>Пароль:</label>
-        <input type="text" formControlName="passengerAge" />
+        <input type="text" formControlName="password"/>
       </div>
     </form>
     <div class="butt">
-      <button class="desing"  id="op" routerLink="/books">Вход</button>
-      <button class="desing"  id="opp" routerLink="/books">Регистрация</button>
+      <button class="desing" (click)="requestServer()">{{ buttonName }}</button>
     </div>
   </div>
 </div>

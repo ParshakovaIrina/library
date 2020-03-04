@@ -1,0 +1,25 @@
+<form [formGroup]="editingForm">
+  <div>
+    <label>Название:</label>
+    <input class="yui" type="text" value="{{book.name}}" formControlName="name"/>
+  </div>
+  <div>
+    <label>Автор:</label>
+    <input class="yui" type="text" value="{{book.author}}" formControlName="author"/>
+  </div>
+  <div>
+    <label>Год:</label>
+    <input class="yui" type="text" value="{{book.year}}" formControlName="year"/>
+  </div>
+  <div>
+    <label>Жанр:</label>
+    <input class="yui" type="text" value="{{book.genre}}" formControlName="genre"/>
+  </div>
+  <div>
+    <label>Описание:</label>
+    <textarea class="descript-size" rows="15" formControlName="description" placeholder="{{book.description}}"></textarea>
+  </div>
+</form>
+<div class="butt">
+  <button class="desing" (click)="sendServer()">отправить</button>
+</div>

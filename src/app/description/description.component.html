@@ -1,53 +1,31 @@
-
 <!--<div *ngIf="book">-->
-   <div class="main">
+<div class="main">
 
-          <div class="main-img">
-              <img src="{{book.image}}">
-          </div>
-     <button class="bu-bottom"  routerLink="/books"><img class="butt" src="../../assets/back.svg"> </button>
+<div class="main-img">
+  <img src="{{book.image}}">
+</div>
+<button class="bu-bottom" routerLink="/books"><img class="butt" src="../../assets/back.svg"></button>
 
-        <div  class="main-descr">
-          <div class="main-descr-top">
-           <div> <h2>{{book.name | uppercase}} </h2> </div>
-            <div class="main-descr-top-but">
-            <button class="bu"  (click)="remo()"><img class="butt" src="../../assets/penсil.svg"> </button>
-        <button class="bu"  routerLink="/books"><img class="butt" src="../../assets/delete.svg"> </button>
-      </div>
-          </div>
-          <div class="edit" id="editName">
-            <label class="main-descr-name">Название:
-              <input class="input" size="30" [(ngModel)]="book.name" placeholder="name"/>
-            </label>
-          </div>
-          <div>
-              <span class="main-descr-name">Автор: </span>
-                <div id="descr" class="tyuio">{{book.author}} </div>
-               <div id="red" class="edit"><input class="input" size="30" [(ngModel)]="book.author" placeholder="name"/> </div>
-          </div>
+<div class="main-descr">
+  <div class="main-descr-top">
+    <div><h2>{{book.name | uppercase}} </h2></div>
+    <div class="main-descr-top-but">
+      <button class="bu" (click)="remo()"><img class="butt" src="../../assets/penсil.svg"></button>
+      <button class="bu" routerLink="/books"><img class="butt" src="../../assets/delete.svg"></button>
+    </div>
+  </div>
+  <ng-container [ngSwitch]="editMode">
 
-          <div><span class="main-descr-name">Год: </span>
-            <div id="descriptionYear" class="tyuio">{{book.year}} </div>
-            <div id="editYear" class="edit"><input class="input" size="30" [(ngModel)]="book.year" placeholder="name"/> </div>
+    <ng-container *ngSwitchCase="false">
+      <app-edit-book [book]="book"></app-edit-book>
+    </ng-container>
 
-          </div>
+    <ng-container *ngSwitchCase="true">
+      <app-view [book]="book"></app-view>
+    </ng-container>
 
-          <div><span class="main-descr-name">Жанр: </span>
-            <div id="descriptionGenre" class="tyuio">{{book.genre}} </div>
-            <div id="editGenre" class="edit"><input class="input" size="30" [(ngModel)]="book.genre" placeholder="name"/> </div>
-          </div>
-        <div id="bookDescription">{{book.description}} </div>
-          <div  class="edit" id="editButton">
-            <div >
-              <textarea class="descript-size" rows="15" [(ngModel)]="book.description" placeholder="name"></textarea>
-            </div>
-            <div class="butt">
-              <button class="desing" (click)="goBack()">Обратно</button>
-              <button class="desing" (click)="mb()" routerLink="/detail/{{book.id}}">Сохранить</button>
-            </div>
-          </div>
-      </div>
+  </ng-container>
 
-
-
+</div>
+</div>
 
