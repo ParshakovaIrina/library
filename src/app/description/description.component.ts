@@ -1,11 +1,13 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Book} from '../book';
+import {Book} from '../interfaces/book';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../book.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {BOOKS} from '../example-books';
 import {RestService} from "../services/rest.service";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-description',
@@ -16,7 +18,7 @@ import {RestService} from "../services/rest.service";
 export class DescriptionComponent implements OnInit, OnChanges {
   editMode: boolean = true;
   book: Book;
-  books = JSON.parse(localStorage.getItem("myKey"));
+ //  books = JSON.parse(localStorage.getItem("myKey"));
 
   constructor(private route: ActivatedRoute,
               private bookService: BookService,
@@ -26,8 +28,9 @@ export class DescriptionComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+
     this.getBook();
-    //this.edittingForm.setValue(this.book);
+    console.log(this.book);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -37,23 +40,27 @@ export class DescriptionComponent implements OnInit, OnChanges {
 
 
   getBook(): void {
-    const name = +this.route.snapshot.paramMap.get('id');
-    this.book = this.books[name];
+    const name = +this.route.snapshot.paramMap.get("id");
+    console.log(name);
+    this.bookService.getBookById(name)
+      .subscribe(book => this.book = book);
+   // this.book = this.books[name];
   }
 
   deleteBook(): void {
-    let serialObj = JSON.stringify(this.book);
-    localStorage.setItem("myKey", serialObj);
-    localStorage.removeItem("myKey");
+    const id = +this.route.snapshot.paramMap.get("id");
+    //this.bookService.deleteBook(id);
+     // .subscribe(book => this.book = book);
   }
 
   remo(): void {
     this.editMode = !this.editMode;
   }
-  sendServer(): void {
-    this.restService.get("http://localhost:8080/books/").subscribe(() => {
-    });
 
+ // sendServer(): void {
+  // console.log(  this.restService.get("http://localhost:8080/detail/4"));
+   // return this.restService.get("http://localhost:8080/detail/4");
+   //.subscribe(model => this.greeting = model));
 
-  }
+ // }
 }

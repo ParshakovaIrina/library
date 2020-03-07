@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   requestServer(): void {
-    console.dir(this.buyTicketForm.value);
+   // console.dir(this.buyTicketForm.value);
     this.buttonName === "Login" ? this.loginService.login() : this.loginService.register();
   }
 

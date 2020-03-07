@@ -1,4 +1,4 @@
-import { Book } from './book';
+import { Book } from './interfaces/book';
 
 describe('Book', () => {
   it('should create an instance', () => {

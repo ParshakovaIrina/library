@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Library';
+  greeting = {'name': 'XXX', 'author': 'Hello World'};
 }

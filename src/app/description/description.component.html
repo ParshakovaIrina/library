@@ -2,26 +2,26 @@
 <div class="main">
 
 <div class="main-img">
-  <img src="{{book.image}}">
+  <!--<img src="{{book.image}}">-->
 </div>
 <button class="bu-bottom" routerLink="/books"><img class="butt" src="../../assets/back.svg"></button>
 
-<div class="main-descr">
+<div class="main-descr" *ngIf="book">
   <div class="main-descr-top">
     <div><h2>{{book.name | uppercase}} </h2></div>
     <div class="main-descr-top-but">
       <button class="bu" (click)="remo()"><img class="butt" src="../../assets/penсil.svg"></button>
-      <button class="bu" routerLink="/books"><img class="butt" src="../../assets/delete.svg"></button>
+      <button class="bu" (click)="deleteBook()" routerLink="/books"><img class="butt" src="../../assets/delete.svg"></button>
     </div>
   </div>
   <ng-container [ngSwitch]="editMode">
 
     <ng-container *ngSwitchCase="false">
-      <app-edit-book [book]="book"></app-edit-book>
+      <app-edit-book [book]="book" [editMode]></app-edit-book>
     </ng-container>
 
     <ng-container *ngSwitchCase="true">
-      <app-view [book]="book"></app-view>
+      <app-view [book]="book" ></app-view>
     </ng-container>
 
   </ng-container>

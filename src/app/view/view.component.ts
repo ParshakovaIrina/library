@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Book} from '../book';
+import {Book} from '../interfaces/book';
 import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../book.service';
 import {BOOKS} from '../example-books';
