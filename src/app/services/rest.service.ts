@@ -21,4 +21,7 @@ export class RestService {
   put(url: string, body: any): Observable<any> {
     return this.httpClient.put(url, body);
   }
+  delete(url: string): Observable<any> {
+    return this.httpClient.delete(url);
+  }
 }

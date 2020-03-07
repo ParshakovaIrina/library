@@ -17,6 +17,7 @@ import {Observable} from "rxjs";
 })
 export class DescriptionComponent implements OnInit, OnChanges {
   editMode: boolean = true;
+  @Input() books;
   book: Book;
  //  books = JSON.parse(localStorage.getItem("myKey"));
 
@@ -49,8 +50,8 @@ export class DescriptionComponent implements OnInit, OnChanges {
 
   deleteBook(): void {
     const id = +this.route.snapshot.paramMap.get("id");
-    //this.bookService.deleteBook(id);
-     // .subscribe(book => this.book = book);
+    this.bookService.deleteBook(id)
+      .subscribe(booki => this.books = booki);
   }
 
   remo(): void {

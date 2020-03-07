@@ -27,8 +27,8 @@ books;
   onSelect(book: Book): void {
     this.selectedBook = book;
   }
-  ShowNewBook(){
-    this.show = true;
+  ShowNewBook() {
+    this.show = !this.show;
   }
 }
 

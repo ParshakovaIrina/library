@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {BookService} from "../book.service";
+import {Book} from "../interfaces/book";
 
 @Component({
   selector: 'app-create-book',
@@ -9,6 +10,7 @@ import {BookService} from "../book.service";
 })
 export class CreateBookComponent implements OnInit {
   addBookForm: FormGroup;
+  book: Book;
   constructor(private bookService: BookService) {
     this._createForm();
   }
@@ -25,4 +27,10 @@ export class CreateBookComponent implements OnInit {
       description: new FormControl(null),
     });
   }
+  addBook(): void {
+    this.bookService.addBook(this.addBookForm.value)
+      .subscribe(book => this.book = book);
+    alert("книга добавлена");
+    }
+
 }

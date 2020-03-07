@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {colors} from "@angular/cli/utilities/color";
-import {LoginService} from "./login.service";
+import {LoginService} from "../login/login.service";
+import {Book} from "../interfaces/book";
+import {MyUser} from "../interfaces/MyUser";
 
 export type ButtonName = "Login" | "Register";
 
@@ -11,15 +12,17 @@ export type ButtonName = "Login" | "Register";
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
-  buyTicketForm: FormGroup;
+  userForm: FormGroup;
   buttonName: ButtonName;
+  user: MyUser;
 
   constructor(private loginService: LoginService) {
     this._createForm();
   }
 
   private _createForm(): void {
-    this.buyTicketForm = new FormGroup({
+    this.userForm = new FormGroup({
+      id: new FormControl(null),
       login: new FormControl(null),
      password: new FormControl(null),
     });
@@ -31,9 +34,11 @@ export class LoginComponent implements OnInit {
 
   requestServer(): void {
    // console.dir(this.buyTicketForm.value);
-    this.buttonName === "Login" ? this.loginService.login() : this.loginService.register();
+    //this.buttonName === "Login" ? this.loginService.login() : this.loginService.register(this.userForm.value);
+    this.loginService.register(this.userForm.value).subscribe((newUser: MyUser) => {
+      this.user = newUser;
+    });
   }
-
   ngOnInit() {
     this.buttonName = "Login";
   }

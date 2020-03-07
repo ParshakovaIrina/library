@@ -22,6 +22,7 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.editMode = !this.editMode;
     this.editingForm.setValue(this.book);
   }
 
@@ -48,7 +49,7 @@ export class EditBookComponent implements OnInit {
   updateBook(): void {
     this.bookService.updateBook(this.book.id, this.editingForm.value).subscribe((book: Book) => {
       this.book = book;
-      this.location.back();
+      //this.location.back();
     });
 
     // this.restService.updateBook();

@@ -1,4 +1,9 @@
-<form [formGroup]="addBookForm" class="edit-book-form">
+<div class="create-book-form">
+
+  <div class="main-table-name">
+    <h1 class="main-table-name-text">Моя библиотека</h1>
+  </div>
+  <form [formGroup]="addBookForm" >
   <div>
     <label>Название:</label>
     <input class="edit-book-form__input" type="text"  formControlName="name"/>
@@ -21,6 +26,7 @@
   </div>
 </form>
 <div class="butt">
-  <!--<button class="desing" (click)="sendServer()">отправить</button> -->
- <!-- <button class="desing" (click)="updateBook()">отправить</button>-->
+  <button class="desing" routerLink="/books">отмена</button>
+  <button class="desing" (click)="addBook()">Сохранить</button>
+</div>
 </div>

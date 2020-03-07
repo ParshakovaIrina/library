@@ -32,7 +32,11 @@ export class BookService {
     return this.restService.put(`${this.baseUrl}/detail/${id}`, value);
   }
 
-  // deleteBook(id: number): Observable<any> {
-  //   return this.restService.delete(`${this.baseUrl}/detail/${id}`);
-  // }
+   deleteBook(id: number): Observable<any> {
+     return this.restService.delete(`${this.baseUrl}/detail/${id}`);
+   }
+
+  addBook(value: UpdateBookRequest): Observable<Book> {
+    return this.restService.post(`${this.baseUrl}/books`, value);
+  }
 }
