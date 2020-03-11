@@ -13,6 +13,7 @@ import { ViewComponent } from './view/view.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     ViewComponent,
     EditBookComponent,
     CreateBookComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

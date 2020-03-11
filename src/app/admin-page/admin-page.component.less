@@ -1,9 +1,9 @@
 .main-table {
-  background-color: blue;
-  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 2px solid rgba(70, 13, 13, 0.445);
+  border-radius: 8px;
 
   &-top{
     display: flex;
@@ -17,6 +17,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
+    &__wrapper{
+      &:nth-child(2n){
+        background-color: red;
+      }
+    }
   }
 }
 

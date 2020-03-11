@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AdminService} from "../admin-page/admin.service";
 import {MyUser} from "../interfaces/MyUser";
 
@@ -8,14 +8,29 @@ import {MyUser} from "../interfaces/MyUser";
   styleUrls: ['./admin-page.component.less']
 })
 export class AdminPageComponent implements OnInit {
-  users: MyUser;
-  constructor(private adminService: AdminService) { }
+  users: MyUser[];
+
+  constructor(private adminService: AdminService) {
+  }
+
   ngOnInit() {
     this.getUsers();
   }
+
   getUsers(): void {
     this.adminService.getUsers()
-      .subscribe(users => this.users = users);
-    console.log(this.users);
+      .subscribe((users: MyUser[]) => {
+        this.users = users;
+        console.log(this.users);
+      });
+  }
+
+  _editUser(selectedUser: MyUser): void {
+    if (selectedUser.selected) {
+      selectedUser.selected = false;
+    } else {
+      this.users.forEach((user: MyUser) => user.selected = false);
+      selectedUser.selected = true;
+    }
   }
 }

@@ -11,7 +11,7 @@ export class AdminService {
   private baseUrl = "http://localhost:8080";
   constructor(private restService: RestService) { }
 
-  getUsers(): Observable<any> {
+  getUsers(): Observable<MyUser[]> {
     return this.restService.get(`${this.baseUrl}/admin-page`);
   }
 }
