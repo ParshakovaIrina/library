@@ -1,0 +1,14 @@
+<div class="main-table">
+  <div class="main-table-top">
+    <p class="main-table-body-cell iu">login</p>
+    <p class="main-table-body-cell iu">password</p>
+    <p class="main-table-body-cell ui">role</p>
+  </div>
+  <div *ngFor="let user of users">
+    <div class="main-table-body">
+      <p class="main-table-body-cell iu"> {{user.login}} </p>
+      <p class="main-table-body-cell ui"> {{user.password}}</p>
+      <p class="main-table-body-cell ui"> {{user.role}} </p>
+    </div>
+  </div>
+</div>

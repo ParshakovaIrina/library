@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Book} from '../interfaces/book';
 import {Location} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BookService} from '../book.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {BOOKS} from '../example-books';
@@ -16,12 +16,11 @@ import {Observable} from "rxjs";
 
 })
 export class DescriptionComponent implements OnInit, OnChanges {
-  editMode: boolean = true;
-  @Input() books;
+  editMode = true;
   book: Book;
- //  books = JSON.parse(localStorage.getItem("myKey"));
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private bookService: BookService,
               private restService: RestService,
               private location: Location) {
@@ -51,17 +50,15 @@ export class DescriptionComponent implements OnInit, OnChanges {
   deleteBook(): void {
     const id = +this.route.snapshot.paramMap.get("id");
     this.bookService.deleteBook(id)
-      .subscribe(booki => this.books = booki);
+      .subscribe(() => this.router.navigate(["books"]));
   }
 
   remo(): void {
     this.editMode = !this.editMode;
   }
+  onChanged(book: Book) {
+    this.remo();
+    this.book = book;
+  }
 
- // sendServer(): void {
-  // console.log(  this.restService.get("http://localhost:8080/detail/4"));
-   // return this.restService.get("http://localhost:8080/detail/4");
-   //.subscribe(model => this.greeting = model));
-
- // }
 }

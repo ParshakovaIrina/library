@@ -7,14 +7,11 @@ import {Injectable} from "@angular/core";
 @Injectable({
   providedIn: "root"
 })
-export class LoginService {
+export class AdminService {
   private baseUrl = "http://localhost:8080";
   constructor(private restService: RestService) { }
 
-  login(value: MyUser): Observable<MyUser> {
-    return this.restService.post(`${this.baseUrl}/login`, value);
-  }
-  register(value: MyUser): Observable<MyUser> {
-    return this.restService.post(`${this.baseUrl}/registration`, value);
+  getUsers(): Observable<any> {
+    return this.restService.get(`${this.baseUrl}/admin-page`);
   }
 }

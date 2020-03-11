@@ -30,9 +30,9 @@
       <img src="{{selectedBook.image}}">
   </div>
   <div class="show-container" *ngIf="show">
+    <button class="bottt"(click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/delete.svg"></button>
     <app-create-book></app-create-book>
-    <button class="bottt"(click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
-    </button>
+
   </div>
 </div>
 

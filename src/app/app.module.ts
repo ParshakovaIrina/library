@@ -12,6 +12,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ViewComponent } from './view/view.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { CreateBookComponent } from './create-book/create-book.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CreateBookComponent } from './create-book/create-book.component';
     LoginComponent,
     ViewComponent,
     EditBookComponent,
-    CreateBookComponent
+    CreateBookComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       id: new FormControl(null),
       login: new FormControl(null),
      password: new FormControl(null),
+      role: new FormControl(null),
     });
   }
 
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
   requestServer(): void {
    // console.dir(this.buyTicketForm.value);
     //this.buttonName === "Login" ? this.loginService.login() : this.loginService.register(this.userForm.value);
+    this.userForm.value.role = "user";
     this.loginService.register(this.userForm.value).subscribe((newUser: MyUser) => {
       this.user = newUser;
     });

@@ -7,19 +7,12 @@ import {UpdateBookRequest} from "./interfaces/UpdateBookRequest";
 import {RestService} from "./services/rest.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 
 export class BookService {
- private baseUrl = 'http://localhost:8080';
+ private baseUrl = "http://localhost:8080";
   constructor(private restService: RestService) { }
- // getBook(id: number): Observable<Book> {
-
-  //  return of(BOOKS.find(book => book.name === name));
- // }
-//  getBooks(): Observable<Book[]>
-  //  return of(BOOKS);
- // }
 
   getBooks(): Observable<any> {
     return this.restService.get(`${this.baseUrl}/books`);
