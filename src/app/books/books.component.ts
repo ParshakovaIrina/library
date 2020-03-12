@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../interfaces/book';
-import { BOOKS } from '../example-books';
 import { BookService } from '../book.service';
-import {RestService} from "../services/rest.service";
 
 @Component({
   selector: 'app-books',
@@ -12,7 +10,6 @@ import {RestService} from "../services/rest.service";
 export class BooksComponent implements OnInit {
   show: boolean = false;
   selectedBook: Book;
- // books = JSON.parse(localStorage.getItem("myKey"));
 books;
   constructor(private bookService: BookService) { }
 
@@ -27,7 +24,7 @@ books;
   onSelect(book: Book): void {
     this.selectedBook = book;
   }
-  ShowNewBook() {
+  ShowNewBook(): void {
     this.show = !this.show;
   }
 }

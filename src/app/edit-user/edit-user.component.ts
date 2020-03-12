@@ -13,8 +13,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit() {
     console.log(this.user);
   }
-  editValue(login: string, event: MouseEvent): void{
+  editValue(login: string, event: MouseEvent): void {
     event.stopPropagation();
-    console.log(login);
   }
 }

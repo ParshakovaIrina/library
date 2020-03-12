@@ -10,7 +10,7 @@
       <p *ngIf="!user.selected" class="main-table-body-cell ui"> {{user.password}}</p>
       <p *ngIf="!user.selected" class="main-table-body-cell ui"> {{user.role}} </p>
 
-      <app-edit-user *ngIf="user.selected" [user]="user"></app-edit-user>
+      <app-edit-user *ngIf="user.selected" [user]="user" class="input-linei"></app-edit-user>
     </div>
   </div>
 </div>

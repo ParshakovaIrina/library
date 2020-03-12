@@ -1,5 +1,10 @@
+<div class="input-line">
+ <div class="input-line_cell"> <input (click)="editValue(user.login, $event)" value="{{user.login}}" ></div>
+ <div class="input-line_cell"><input (click)="editValue(user.password, $event)" value="{{user.password}}" ></div>
+<div class="input-line_cell"><input (click)="editValue(user.role, $event)" value="{{user.role}}" ></div>
 
-  <input (click)="editValue(user.login, $event)" value="{{user.login}}">
-  <input value="{{user.password}}">
-  <input value="{{user.role}}">
-
+</div>
+<div class="buuu">
+  <button class="bu" ><img class="butt" src="../../assets/penсil.svg"></button>
+  <button class="bu" ><img class="butt" src="../../assets/delete.svg"></button>
+</div>
