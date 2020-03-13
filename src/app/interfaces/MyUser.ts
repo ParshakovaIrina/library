@@ -3,4 +3,5 @@ export interface MyUser {
   login: string;
   password: string;
   role: string;
+  selected?: boolean;
 }

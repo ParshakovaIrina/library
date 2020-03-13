@@ -6,18 +6,22 @@
 <!--</div>-->
 <form [formGroup]="userForm" class="input-line">
   <div class="input-line_cell">
-    <input  type="text"  formControlName="login"/>
+    <input (click)="editValue( $event)" type="text"  formControlName="login"/>
   </div>
   <div class="input-line_cell">
-    <input  type="text"  formControlName="password"/>
+    <input (click)="editValue( $event)" type="text"  formControlName="password"/>
   </div>
   <div class="input-line_cell">
-    <input  type="text"  formControlName="role"/>
+<!--    <input (click)="editValue( $event)" type="text"  formControlName="role"/>-->
+    <select (click)="editValue( $event)" type="text"  formControlName="role">
+      <option>admin</option>
+      <option>redactor</option>
+      <option>user</option>
+    </select>
   </div>
 </form>
 
-<div class="buuu">
-<!--  (click)="editValue( $event)"-->
+<div (click)="editValue( $event)" class="buuu">
 
   <button (click)="updateUser()" class="bu" ><img class="butt" src="../../assets/save-file.svg "></button>
   <button (click)="deleteUser()" class="bu" ><img class="butt" src="../../assets/delete.svg"></button>

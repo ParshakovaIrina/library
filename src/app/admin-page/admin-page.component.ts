@@ -26,16 +26,12 @@ export class AdminPageComponent implements OnInit {
       });
   }
 
-  onSelect(user): void {
-    this.selectedUser = user;
+  _editUser(selectedUser: MyUser): void {
+    if (selectedUser.selected) {
+      selectedUser.selected = false;
+    } else {
+      this.users.forEach((user: MyUser) => user.selected = false);
+      selectedUser.selected = true;
+    }
   }
-
-  // _editUser(selectedUser: MyUser): void {
-  //   if (selectedUser.selected) {
-  //     selectedUser.selected = false;
-  //   } else {
-  //     this.users.forEach((user: MyUser) => user.selected = false);
-  //     selectedUser.selected = true;
-  //   }
-  // }
 }

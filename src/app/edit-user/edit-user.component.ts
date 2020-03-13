@@ -27,17 +27,19 @@ export class EditUserComponent implements OnInit {
       login: new FormControl(null),
       password: new FormControl(null),
       role: new FormControl(null),
+      selected: new FormControl(null)
     });
   }
-  // editValue( event: MouseEvent): void {
-  //   event.stopPropagation();
-  // }
+  editValue( event: MouseEvent): void {
+    event.stopPropagation();
+  }
   deleteUser(): void {
     console.log(this.user.id);
     this.userService.deleteUser(this.user.id)
       .subscribe(() => this.router.navigate(["books"]));
   }
   updateUser(): void {
+    console.log( this.userForm.value);
     this.userService.updateUser(this.user.id, this.userForm.value).subscribe((user: MyUser) => {
     this.user = user;
     });

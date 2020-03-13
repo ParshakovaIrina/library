@@ -5,13 +5,12 @@
     <p class="main-table-body-cell ui">role</p>
   </div>
   <div *ngFor="let user of users" class="main-table-body__wrapper">
-    <div class="main-table-body" [class.selected]="user === selectedUser" (click)="onSelect(user)" >
-<!--         (click)="_editUser(user)">-->
-      <p  class="main-table-body-cell iu"> {{user.login}} </p>
-      <p  class="main-table-body-cell ui"> {{user.password}}</p>
-      <p  class="main-table-body-cell ui"> {{user.role}} </p>
+    <div class="main-table-body"  (click)="_editUser(user)">
+      <p *ngIf="!user.selected" class="main-table-body-cell iu"> {{user.login}} </p>
+      <p *ngIf="!user.selected" class="main-table-body-cell ui"> {{user.password}}</p>
+      <p *ngIf="!user.selected" class="main-table-body-cell ui"> {{user.role}} </p>
 
-      <app-edit-user *ngIf="selectedUser" [user]="user" class="input-linei"></app-edit-user>
+      <app-edit-user *ngIf="user.selected" [user]="user" class="input-linei"></app-edit-user>
     </div>
   </div>
 </div>
