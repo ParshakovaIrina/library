@@ -1,10 +1,24 @@
-<div class="input-line">
- <div class="input-line_cell"> <input (click)="editValue(user.login, $event)" value="{{user.login}}" ></div>
- <div class="input-line_cell"><input (click)="editValue(user.password, $event)" value="{{user.password}}" ></div>
-<div class="input-line_cell"><input (click)="editValue(user.role, $event)" value="{{user.role}}" ></div>
+<!--<div class="input-line">-->
+<!-- <div class="input-line_cell"> <input (click)="editValue($event)" value="{{user.login}}" ></div>-->
+<!-- <div class="input-line_cell"><input (click)="editValue( $event)" value="{{user.password}}" ></div>-->
+<!--<div class="input-line_cell"><input (click)="editValue( $event)" value="{{user.role}}" ></div>-->
 
-</div>
+<!--</div>-->
+<form [formGroup]="userForm" class="input-line">
+  <div class="input-line_cell">
+    <input  type="text"  formControlName="login"/>
+  </div>
+  <div class="input-line_cell">
+    <input  type="text"  formControlName="password"/>
+  </div>
+  <div class="input-line_cell">
+    <input  type="text"  formControlName="role"/>
+  </div>
+</form>
+
 <div class="buuu">
-  <button class="bu" ><img class="butt" src="../../assets/penсil.svg"></button>
-  <button class="bu" ><img class="butt" src="../../assets/delete.svg"></button>
+<!--  (click)="editValue( $event)"-->
+
+  <button (click)="updateUser()" class="bu" ><img class="butt" src="../../assets/save-file.svg "></button>
+  <button (click)="deleteUser()" class="bu" ><img class="butt" src="../../assets/delete.svg"></button>
 </div>

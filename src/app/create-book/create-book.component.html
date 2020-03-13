@@ -1,9 +1,9 @@
 <div class="create-book-form">
 
   <div class="main-table-name">
-    <h1 class="main-table-name-text">Моя библиотека</h1>
+    <h1 class="main-table-name-text">Новая книга</h1>
   </div>
-  <form [formGroup]="addBookForm" >
+  <form [formGroup]="addBookForm" class="edit-book-form" >
   <div>
     <label>Название:</label>
     <input class="edit-book-form__input" type="text"  formControlName="name"/>
@@ -21,12 +21,10 @@
     <input class="edit-book-form__input" type="text"  formControlName="genre"/>
   </div>
   <div>
-    <label>Описание:</label>
-    <textarea class="edit-book-form__input _description" rows="15" formControlName="description"></textarea>
+    <textarea class="edit-book-form__input_description" rows="10" formControlName="description" name="ohgjk"></textarea>
   </div>
 </form>
-<div class="butt">
-  <button class="desing" routerLink="/books">отмена</button>
-  <button class="desing" (click)="addBook()">Сохранить</button>
+<div>
+  <button class="but-desing" (click)="addBook()">Сохранить</button>
 </div>
 </div>
