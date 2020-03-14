@@ -13,12 +13,12 @@ export class UserService {
   private baseUrl = "http://localhost:8080";
   constructor(private restService: RestService) { }
 
-  updateUser(id: number, value: MyUser): Observable<MyUser> {
-    return this.restService.put(`${this.baseUrl}/admin-page`, value);
+  updateUser(id: number, value: MyUser): Observable<MyUser[]> {
+    return this.restService.put(`${this.baseUrl}/admin-page/${id}`, value);
   }
 
-  deleteUser(value: number): Observable<any> {
-    return this.restService.delete(`${this.baseUrl}/admin-page`);
+  deleteUser(id: number): Observable<any> {
+    return this.restService.delete(`${this.baseUrl}/admin-page/${id}`);
   }
 
 }

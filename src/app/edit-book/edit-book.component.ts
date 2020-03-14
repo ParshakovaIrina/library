@@ -1,12 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Book} from "../interfaces/book";
 import {BookService} from "../book.service";
-import {RestService} from "../services/rest.service";
-import {Location} from "@angular/common";
-import {Output} from "@angular/core";
-import {EventEmitter} from "@angular/core";
-import {takeUntil} from "rxjs/operators";
 
 
 @Component({
@@ -19,6 +14,7 @@ export class EditBookComponent implements OnInit {
   @Input() book: Book;
   @Input() editMode;
   @Output() onChanged = new EventEmitter<Book>();
+
   constructor(private bookService: BookService
   ) {
     this._createForm();
@@ -43,15 +39,18 @@ export class EditBookComponent implements OnInit {
       description: new FormControl(null),
     });
   }
+
   change(book: Book): void {
     this.onChanged.emit(book);
   }
+
   updateBook(): void {
     this.bookService.updateBook(this.book.id, this.editingForm.value).subscribe((book: Book) => {
       this.book = book;
       this.change(book);
     });
   }
+
   goBack(): void {
     this.change(this.book);
   }

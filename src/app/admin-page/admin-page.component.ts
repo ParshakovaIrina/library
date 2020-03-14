@@ -25,7 +25,10 @@ export class AdminPageComponent implements OnInit {
         console.log(this.users);
       });
   }
-
+  onChanged(users: MyUser[]) {
+    this.users.forEach((user: MyUser) => user.selected = false);
+    this.users = users;
+  }
   _editUser(selectedUser: MyUser): void {
     if (selectedUser.selected) {
       selectedUser.selected = false;
