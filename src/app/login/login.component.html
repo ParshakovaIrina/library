@@ -1,19 +1,30 @@
 <div class="login-background">
   <div class="background-u">
-    <h1 (click)="toggleMode()" class="go">Вход</h1>
+    <h1 (click)="ClickLogin()" class="go">Вход</h1>
     <span>/</span>
-    <h1 (click)="toggleMode()" class="goo">Регистрация</h1>
-    <form [formGroup]="userForm">
-      <div>
+    <h1 (click)="ClickRegistration()" class="goo">Регистрация</h1>
+
+    <form [formGroup]="userForm" class="rrr">
+      <div class="rrrr">
         <label>Имя:</label>
         <input type="text" formControlName="login"/>
       </div>
 
-      <div>
+      <div class="r">
         <label>Пароль:</label>
-        <input type="text" formControlName="password"/>
+        <input type="password" formControlName="password"/>
       </div>
     </form>
+
+    <div *ngIf="!errorUser" class="errorName">
+      Данное имя существует
+    </div>
+    <div *ngIf="goodUser" class="goodName">
+      Вы зарегистрированы! Перейдите на вход
+    </div>
+    <div *ngIf="!chekLogin" class="errorName">
+      Неправильный логин или пароль
+    </div>
     <div class="butt">
       <button class="desing" (click)="requestServer()">{{ buttonName }}</button>
     </div>

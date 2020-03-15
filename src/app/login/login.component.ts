@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from "../login/login.service";
-import {Book} from "../interfaces/book";
 import {MyUser} from "../interfaces/MyUser";
+import {ActivatedRoute, Router} from '@angular/router';
 
 export type ButtonName = "Login" | "Register";
 
@@ -15,8 +15,13 @@ export class LoginComponent implements OnInit {
   userForm: FormGroup;
   buttonName: ButtonName;
   user: MyUser;
+  errorUser: boolean = true;
+  chekLogin: boolean = true;
+  goodUser: boolean = false;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this._createForm();
   }
 
@@ -24,23 +29,43 @@ export class LoginComponent implements OnInit {
     this.userForm = new FormGroup({
       id: new FormControl(null),
       login: new FormControl(null),
-     password: new FormControl(null),
+      password: new FormControl(null),
       role: new FormControl(null),
     });
   }
 
-  toggleMode() {
-    this.buttonName === "Login" ? this.buttonName = "Register" : this.buttonName = "Login";
+
+  ClickRegistration(): void {
+    this.buttonName = "Register";
+    this.chekLogin = true;
+  }
+
+  ClickLogin(): void {
+    this.buttonName = "Login";
+    this.errorUser = true;
+    this.goodUser = false;
   }
 
   requestServer(): void {
-   // console.dir(this.buyTicketForm.value);
-    //this.buttonName === "Login" ? this.loginService.login() : this.loginService.register(this.userForm.value);
     this.userForm.value.role = "user";
-    this.loginService.register(this.userForm.value).subscribe((newUser: MyUser) => {
+    this.buttonName === "Login" ? this.loginService.login(this.userForm.value).subscribe((newUser: MyUser) => {
       this.user = newUser;
+      if (this.user == null) {
+        this.chekLogin = false;
+      } else {
+        this.router.navigate(["books"]);
+      }
+
+    }) : this.loginService.register(this.userForm.value).subscribe((chekUser: boolean) => {
+      this.errorUser = chekUser;
+      this.goodUser = chekUser;
     });
+
+    // //this.loginService.register(this.userForm.value).subscribe((newUser: MyUser) => {
+    //   this.user = newUser;
+    // });
   }
+
   ngOnInit() {
     this.buttonName = "Login";
   }

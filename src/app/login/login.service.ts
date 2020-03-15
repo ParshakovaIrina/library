@@ -14,7 +14,7 @@ export class LoginService {
   login(value: MyUser): Observable<MyUser> {
     return this.restService.post(`${this.baseUrl}/login`, value);
   }
-  register(value: MyUser): Observable<MyUser> {
+  register(value: MyUser): Observable<boolean> {
     return this.restService.post(`${this.baseUrl}/registration`, value);
   }
 }
