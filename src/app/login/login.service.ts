@@ -17,4 +17,7 @@ export class LoginService {
   register(value: MyUser): Observable<boolean> {
     return this.restService.post(`${this.baseUrl}/registration`, value);
   }
+  deleteSession(idUser: number): Observable<any> {
+    return this.restService.delete(`${this.baseUrl}/books/${idUser}`);
+  }
 }

@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../book.service";
 import {Book} from "../interfaces/book";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-book',
@@ -9,11 +10,14 @@ import {Book} from "../interfaces/book";
   styleUrls: ['./create-book.component.less']
 })
 export class CreateBookComponent implements OnInit {
+  @Input() idUser;
   addBookForm: FormGroup;
   book: Book;
 
   constructor(
-    private bookService: BookService) {
+    private bookService: BookService,
+    private router: Router,
+    private route: ActivatedRoute) {
     this._createForm();
   }
 
@@ -39,8 +43,13 @@ export class CreateBookComponent implements OnInit {
 
   addBook(): void {
     if (this.addBookForm.dirty) {
-      this.bookService.addBook(this.addBookForm.value)
-        .subscribe(book => this.book = book);
+      this.bookService.addBook(this.idUser, this.addBookForm.value)
+        .subscribe((book: Book) => {
+          this.book = book;
+          if (this.book == null) {
+            this.router.navigate(["login"]);
+          }
+        });
       alert("книга добавлена");
     }
   }

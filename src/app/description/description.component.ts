@@ -1,12 +1,10 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Book} from '../interfaces/book';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookService} from '../book.service';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {BOOKS} from '../example-books';
 import {RestService} from "../services/rest.service";
-import {Observable} from "rxjs";
+import {LoginService} from "../login/login.service";
 
 
 @Component({
@@ -18,19 +16,20 @@ import {Observable} from "rxjs";
 export class DescriptionComponent implements OnInit, OnChanges {
   editMode = true;
   book: Book;
+  idUser = +this.route.snapshot.paramMap.get("idUser");
+  idBook = +this.route.snapshot.paramMap.get("idBook");
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private bookService: BookService,
               private restService: RestService,
+              private loginService: LoginService,
               private location: Location) {
 
   }
 
   ngOnInit(): void {
-
     this.getBook();
-    console.log(this.book);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -38,27 +37,33 @@ export class DescriptionComponent implements OnInit, OnChanges {
   }
 
 
-
   getBook(): void {
-    const name = +this.route.snapshot.paramMap.get("id");
-    console.log(name);
-    this.bookService.getBookById(name)
-      .subscribe(book => this.book = book);
-   // this.book = this.books[name];
+    this.bookService.getBookById(this.idUser, this.idBook)
+      .subscribe((book: Book) => {
+        this.book = book;
+        if (this.book == null) {
+          this.router.navigate(["login"]);
+        }
+      });
   }
 
   deleteBook(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
-    this.bookService.deleteBook(id)
-      .subscribe(() => this.router.navigate(["books"]));
+    this.bookService.deleteBook(this.idBook)
+      .subscribe(() => this.router.navigate(["books/", this.idUser]));
   }
 
   remo(): void {
     this.editMode = !this.editMode;
   }
+
   onChanged(book: Book) {
     this.remo();
     this.book = book;
   }
-
+  deleteSession(): void {
+    this.loginService.deleteSession(this.idUser)
+      .subscribe(() => {
+        this.router.navigate(["login"]);
+      });
+  }
 }

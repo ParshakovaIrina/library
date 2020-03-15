@@ -1,10 +1,9 @@
 <!--<div *ngIf="book">-->
 <div class="main">
-
 <div class="main-img">
   <!--<img src="{{book.image}}">-->
 </div>
-<button class="bu-bottom" routerLink="/books"><img class="butt" src="../../assets/back.svg"></button>
+<button class="bu-bottom" routerLink="/books/{{idUser}}"><img class="butt" src="../../assets/back.svg"></button>
 
 <div class="main-descr" *ngIf="book">
   <div class="main-descr-top">
@@ -17,15 +16,15 @@
   <ng-container [ngSwitch]="editMode">
 
     <ng-container *ngSwitchCase="false">
-      <app-edit-book [book]="book" [editMode] (onChanged)="onChanged($event)"></app-edit-book>
+      <app-edit-book [book]="book" [idUser]="idUser" [editMode] (onChanged)="onChanged($event)"></app-edit-book>
     </ng-container>
 
     <ng-container *ngSwitchCase="true">
-      <app-view [book]="book" ></app-view>
+      <app-view [book]="book"></app-view>
     </ng-container>
 
   </ng-container>
-<div routerLink="/login">exit</div>
 </div>
+  <div (click)="deleteSession()">exit</div>
 </div>
 

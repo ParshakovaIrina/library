@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from "../login/login.service";
 import {MyUser} from "../interfaces/MyUser";
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       if (this.user == null) {
         this.chekLogin = false;
       } else {
-        this.router.navigate(["books"]);
+        this.router.navigate(["books", this.user.id]);
       }
 
     }) : this.loginService.register(this.userForm.value).subscribe((chekUser: boolean) => {

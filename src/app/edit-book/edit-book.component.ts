@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Book} from "../interfaces/book";
 import {BookService} from "../book.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,10 +13,12 @@ import {BookService} from "../book.service";
 export class EditBookComponent implements OnInit {
   editingForm: FormGroup;
   @Input() book: Book;
+  @Input() idUser;
   @Input() editMode;
   @Output() onChanged = new EventEmitter<Book>();
 
-  constructor(private bookService: BookService
+  constructor(private bookService: BookService,
+              private router: Router
   ) {
     this._createForm();
   }
@@ -45,9 +48,13 @@ export class EditBookComponent implements OnInit {
   }
 
   updateBook(): void {
-    this.bookService.updateBook(this.book.id, this.editingForm.value).subscribe((book: Book) => {
+    this.bookService.updateBook(this.idUser, this.book.id, this.editingForm.value).subscribe((book: Book) => {
       this.book = book;
-      this.change(book);
+      if (this.book == null) {
+        this.router.navigate(["login"]);
+      } else {
+        this.change(book);
+      }
     });
   }
 

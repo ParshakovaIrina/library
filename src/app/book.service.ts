@@ -14,22 +14,22 @@ export class BookService {
  private baseUrl = "http://localhost:8080";
   constructor(private restService: RestService) { }
 
-  getBooks(): Observable<any> {
-    return this.restService.get(`${this.baseUrl}/books`);
+  getBooks(idUser: number): Observable<any> {
+    return this.restService.get(`${this.baseUrl}/books/${idUser}`);
   }
-  getBookById(id: number): Observable<any> {
-    return this.restService.get(`${this.baseUrl}/detail/${id}`);
+  getBookById(idUser: number, idBook: number): Observable<any> {
+    return this.restService.get(`${this.baseUrl}/detail/${idUser}/${idBook}`);
   }
-  updateBook(id: number, value: UpdateBookRequest): Observable<Book> {
+  updateBook(idUser: number, idBook: number, value: UpdateBookRequest): Observable<Book> {
     console.log("any" , value);
-    return this.restService.put(`${this.baseUrl}/detail/${id}`, value);
+    return this.restService.put(`${this.baseUrl}/detail/${idUser}/${idBook}`, value);
   }
 
-   deleteBook(id: number): Observable<any> {
-     return this.restService.delete(`${this.baseUrl}/detail/${id}`);
+   deleteBook(idBook: number): Observable<any> {
+     return this.restService.delete(`${this.baseUrl}/detail/${idBook}`);
    }
 
-  addBook(value: UpdateBookRequest): Observable<Book> {
-    return this.restService.post(`${this.baseUrl}/books`, value);
+  addBook(idUser: number, value: UpdateBookRequest): Observable<Book> {
+    return this.restService.post(`${this.baseUrl}/books/${idUser}`, value);
   }
 }
