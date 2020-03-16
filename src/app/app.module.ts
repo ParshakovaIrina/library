@@ -14,6 +14,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import {MyRouteService} from "./services/my-route.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [LoginService, RestService],
+  providers: [LoginService, RestService, MyRouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

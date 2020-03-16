@@ -5,6 +5,7 @@ import { BOOKS } from './example-books';
 import {HttpClient} from "@angular/common/http";
 import {UpdateBookRequest} from "./interfaces/UpdateBookRequest";
 import {RestService} from "./services/rest.service";
+import {Roles} from "./interfaces/Roles";
 
 @Injectable({
   providedIn: "root"
@@ -16,6 +17,9 @@ export class BookService {
 
   getBooks(idUser: number): Observable<any> {
     return this.restService.get(`${this.baseUrl}/books/${idUser}`);
+  }
+  getRoleById(idUser: number): Observable<Roles> {
+    return this.restService.get(`${this.baseUrl}/roles/${idUser}/`);
   }
   getBookById(idUser: number, idBook: number): Observable<any> {
     return this.restService.get(`${this.baseUrl}/detail/${idUser}/${idBook}`);

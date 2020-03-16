@@ -3,6 +3,7 @@ import {Book} from '../interfaces/book';
 import {BookService} from '../book.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LoginService} from "../login/login.service";
+import {Roles} from "../interfaces/Roles";
 
 @Component({
   selector: 'app-books',
@@ -13,7 +14,7 @@ export class BooksComponent implements OnInit {
   idUser = +this.route.snapshot.paramMap.get("idUser");
   show: boolean = false;
   selectedBook: Book;
-
+  role: Roles;
   books;
 
   constructor(private bookService: BookService,
@@ -23,7 +24,15 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getRole();
     this.getBooks();
+  }
+
+  getRole(): void {
+    this.bookService.getRoleById(this.idUser)
+      .subscribe((role: Roles) => {
+        this.role = role;
+      });
   }
 
   getBooks(): void {

@@ -3,7 +3,7 @@
     <div class="main-table">
       <div class="main-table-name">
             <h1 class="main-table-name-text">Моя библиотека</h1>
-            <button class="main-table-name-butt" (click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
+            <button *ngIf=role.addBook class="main-table-name-butt" (click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
             </button>
       </div>
 

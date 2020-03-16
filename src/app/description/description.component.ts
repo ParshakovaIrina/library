@@ -1,10 +1,11 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Book} from '../interfaces/book';
-import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookService} from '../book.service';
 import {RestService} from "../services/rest.service";
+import {MyRouteService} from "../services/my-route.service";
 import {LoginService} from "../login/login.service";
+import {Roles} from "../interfaces/Roles";
 
 
 @Component({
@@ -16,26 +17,34 @@ import {LoginService} from "../login/login.service";
 export class DescriptionComponent implements OnInit, OnChanges {
   editMode = true;
   book: Book;
+  role: Roles;
   idUser = +this.route.snapshot.paramMap.get("idUser");
   idBook = +this.route.snapshot.paramMap.get("idBook");
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private bookService: BookService,
+              private myRouteService: MyRouteService,
               private restService: RestService,
-              private loginService: LoginService,
-              private location: Location) {
+              private loginService: LoginService) {
 
   }
 
   ngOnInit(): void {
     this.getBook();
+    this.getRole();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
   }
 
+  getRole(): void {
+    this.bookService.getRoleById(this.idUser)
+      .subscribe((role: Roles) => {
+        this.role = role;
+      });
+  }
 
   getBook(): void {
     this.bookService.getBookById(this.idUser, this.idBook)
@@ -60,6 +69,7 @@ export class DescriptionComponent implements OnInit, OnChanges {
     this.remo();
     this.book = book;
   }
+
   deleteSession(): void {
     this.loginService.deleteSession(this.idUser)
       .subscribe(() => {
