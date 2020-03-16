@@ -52,7 +52,10 @@ export class BooksComponent implements OnInit {
   ShowNewBook(): void {
     this.show = !this.show;
   }
-
+  onChanged(books: Book[]) {
+    this.ShowNewBook();
+    this.books = books;
+  }
   deleteSession(): void {
     this.loginService.deleteSession(this.idUser)
       .subscribe(() => {

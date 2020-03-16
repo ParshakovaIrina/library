@@ -33,7 +33,7 @@ export class BookService {
      return this.restService.delete(`${this.baseUrl}/detail/${idBook}`);
    }
 
-  addBook(idUser: number, value: UpdateBookRequest): Observable<Book> {
+  addBook(idUser: number, value: UpdateBookRequest): Observable<Book[]> {
     return this.restService.post(`${this.baseUrl}/books/${idUser}`, value);
   }
 }

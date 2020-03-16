@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BookService} from "../book.service";
 import {Book} from "../interfaces/book";
@@ -13,6 +13,9 @@ export class CreateBookComponent implements OnInit {
   @Input() idUser;
   addBookForm: FormGroup;
   book: Book;
+  @Input() books: Book[];
+  @Input() show;
+  @Output() onChanged = new EventEmitter<Book[]>();
 
   constructor(
     private bookService: BookService,
@@ -41,16 +44,21 @@ export class CreateBookComponent implements OnInit {
     });
   }
 
+  change(books: Book[]): void {
+    this.onChanged.emit(this.books);
+  }
+
   addBook(): void {
     if (this.addBookForm.dirty) {
       this.bookService.addBook(this.idUser, this.addBookForm.value)
-        .subscribe((book: Book) => {
-          this.book = book;
-          if (this.book == null) {
+        .subscribe((books: Book[]) => {
+          this.books = books;
+          if (this.books == null) {
             this.router.navigate(["login"]);
+          } else {
+            this.change(this.books);
           }
         });
-      alert("книга добавлена");
     }
   }
 }

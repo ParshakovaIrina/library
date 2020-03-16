@@ -9,8 +9,8 @@
   <div class="main-descr-top">
     <div><h2>{{book.name | uppercase}} </h2></div>
     <div class="main-descr-top-but">
-      <button *ngIf="role.editBook" class="bu" (click)="remo()"><img class="butt" src="../../assets/penсil.svg"></button>
-      <button *ngIf="role.deleteBook" class="bu" (click)="deleteBook()"><img class="butt" src="../../assets/delete.svg"></button>
+      <button *ngIf="role?.editBook" class="bu" (click)="remo()"><img class="butt" src="../../assets/penсil.svg"></button>
+      <button *ngIf="role?.deleteBook" class="bu" (click)="deleteBook()"><img class="butt" src="../../assets/delete.svg"></button>
     </div>
   </div>
   <ng-container [ngSwitch]="editMode">
@@ -25,6 +25,9 @@
 
   </ng-container>
 </div>
-  <div (click)="deleteSession()">exit</div>
+  <div class="p">
+  <div *ngIf="role?.admin" routerLink="/admin-page/{{idUser}}" >admin</div>
+  <div (click)="deleteSession()" >exit</div>
+  </div>
 </div>
 
