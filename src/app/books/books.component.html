@@ -1,8 +1,14 @@
 <!--<div class="bg"></div>-->
+<div class="menu">
+  <button (click)="getBooks()" class="menu-button">Библиотека</button>
+  <button (click)="getUserBooks()" class="menu-button">Мои книги</button>
+  <button *ngIf="role?.admin" routerLink="/admin-page/{{idUser}}" class="menu-button"><img class="menu-button-img" src="../../assets/admin.svg"></button>
+  <button (click)="deleteSession()" class="menu-button"><img class="menu-button-img" src="../../assets/exit.svg"></button>
+</div>
 <div class="main">
-    <div class="main-table">
+    <div class="main-table" (mouseleave)="onOver()">
       <div class="main-table-name">
-            <h1 class="main-table-name-text">Моя библиотека</h1>
+            <h1 class="main-table-name-text">{{name}}</h1>
             <button *ngIf="role?.addBook" class="main-table-name-butt" (click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
             </button>
       </div>
@@ -14,12 +20,15 @@
         <p class="main-table-body-cell ui">Жанр</p>
       </div>
 <div class="procrutka">
-      <div *ngFor="let book of books" [class.selected]="book === selectedBook"(mouseenter)="onSelect(book)">
+      <div *ngFor="let book of books" [class.selected]="book === selectedBook" (mouseenter)="onSelect(book)" >
         <div class="main-table-body">
           <p class="main-table-body-cell iu"> <a class="main-link" routerLink="/detail/{{idUser}}/{{book.id}}"> {{book.name}}  </a></p>
           <p class="main-table-body-cell iu"> {{book.author}} </p>
           <p class="main-table-body-cell ui"> {{book.year}}</p>
           <p class="main-table-body-cell ui"> {{book.genre}} </p>
+          <button *ngIf="book.selected" class="main-table-name-butt" (click)="workWithMyLibr(selectedBook)">
+            <img class="main-table-name-butt-img" src="{{imageButton}}">
+          </button>
         </div>
       </div>
 </div>
@@ -34,8 +43,6 @@
     <app-create-book [idUser]="idUser" [books]="books"(onChanged)="onChanged($event)"></app-create-book>
 
   </div>
-  <div (click)="deleteSession()">exit</div>
-  <div *ngIf="role?.admin" routerLink="/admin-page/{{idUser}}">admin</div>
 </div>
 
 

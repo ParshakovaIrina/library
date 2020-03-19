@@ -7,7 +7,36 @@
   background-color: rgba(0, 0, 0, 0.47);
 
 }
-
+.menu{
+  position: absolute;
+  z-index: 99;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+  background-color: rgba(131, 21, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 8vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  &-button{
+    background-color: rgba(131, 21, 0, 0);
+    margin-right: 2%;
+    border: none;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Lobster';
+    outline: none;
+    &:hover{
+      cursor: pointer;
+      background-color: rgba(131, 21, 0, 0.69);
+    }
+    &-img{
+      width: 30px;
+    }
+  }
+}
 .main {
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,12 +53,13 @@
   overflow: auto;
 
   &-table {
-    width: 34%;
+    margin-top: 8vh;
+    width: 38%;
     margin-left: 12%;
 
     &-name {
-      margin-left: 16%;
-      text-align: center;
+      margin-left: 19%;
+      //text-align: center;
       display: flex;
       flex-direction: row;
 
@@ -103,7 +133,7 @@
 }
 
 .main-table-body:hover {
-  background-color: rgba(59, 4, 4, 0.26);
+  background-color: rgba(131, 21, 0, 0.5);
 }
 
 
