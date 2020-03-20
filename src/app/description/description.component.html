@@ -5,8 +5,8 @@
   <button (click)="deleteSession()" class="menu-button"><img class="menu-button-img" src="../../assets/exit.svg"></button>
 </div>
 <div class="main">
-<div class="main-img">
-  <!--<img src="{{book.image}}">-->
+<div class="main-img" *ngIf="book">
+  <img src="{{book.image}}">
 </div>
 <div class="main-descr" *ngIf="book">
   <div class="main-descr-top">

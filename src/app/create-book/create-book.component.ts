@@ -35,6 +35,7 @@ export class CreateBookComponent implements OnInit {
       year: new FormControl(null),
       genre: new FormControl(null),
       description: new FormControl(null),
+      image: new FormControl(null)
     });
     this.addBookForm.valueChanges.subscribe((val: string) => {
       console.log(val);
@@ -46,6 +47,22 @@ export class CreateBookComponent implements OnInit {
 
   change(books: Book[]): void {
     this.onChanged.emit(this.books);
+  }
+
+  onUploadChange(evt: any) {
+    const file = evt.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = this.handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  handleReaderLoaded(e) {
+    this.addBookForm.value.image = ("data:image/png;base64," + btoa(e.target.result));
+    console.log(this.addBookForm.value.image);
   }
 
   addBook(): void {

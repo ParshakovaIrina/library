@@ -40,6 +40,7 @@ export class EditBookComponent implements OnInit {
       year: new FormControl(null),
       genre: new FormControl(null),
       description: new FormControl(null),
+      image: new FormControl(null)
     });
   }
 

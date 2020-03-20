@@ -4,6 +4,7 @@ import {Book} from './interfaces/book';
 import {UpdateBookRequest} from "./interfaces/UpdateBookRequest";
 import {RestService} from "./services/rest.service";
 import {Roles} from "./interfaces/Roles";
+import {Message} from "./interfaces/message";
 
 @Injectable({
   providedIn: "root"
@@ -28,10 +29,14 @@ export class BookService {
   }
 
   updateBook(idUser: number, idBook: number, value: UpdateBookRequest): Observable<Book> {
-    console.log("any", value);
     return this.restService.put(`${this.baseUrl}/detail/${idUser}/${idBook}`, value);
   }
-
+  addMessage(idUser: number, value: string): Observable<Message> {
+    return this.restService.post(`${this.baseUrl}/message/${idUser}`, value);
+  }
+  showMessage(idUser: number): Observable<Message> {
+    return this.restService.get(`${this.baseUrl}/message/${idUser}`);
+  }
   deleteBook(idBook: number): Observable<any> {
     return this.restService.delete(`${this.baseUrl}/detail/${idBook}`);
   }

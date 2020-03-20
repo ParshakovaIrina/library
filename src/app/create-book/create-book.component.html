@@ -20,6 +20,9 @@
     <label>Жанр:</label>
     <input class="edit-book-form__input" type="text"  formControlName="genre"/>
   </div>
+    <div>
+    <input type="file" (change)="onUploadChange($event)" class="edit-book-form__input" multiple accept="image/*,image/jpeg" formControlName="image"/>
+    </div>
   <div>
     <textarea class="edit-book-form__input_description" rows="10" formControlName="description" ></textarea>
   </div>

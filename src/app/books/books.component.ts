@@ -4,13 +4,15 @@ import {BookService} from '../book.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {LoginService} from "../login/login.service";
 import {Roles} from "../interfaces/Roles";
+import {Message} from "../interfaces/message";
+import {HttpClient} from '@angular/common/http';
 
 export type Name = "Library" | "My Books";
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.less']
+  selector: "app-books",
+  templateUrl: "./books.component.html",
+  styleUrls: ["./books.component.less"]
 })
 export class BooksComponent implements OnInit {
   idUser = +this.route.snapshot.paramMap.get("idUser");
@@ -20,23 +22,42 @@ export class BooksComponent implements OnInit {
   name: Name;
   imageButton: string;
   books;
+  message: Message;
   flag: boolean;
+  myMessage: string;
 
   constructor(private bookService: BookService,
               private loginService: LoginService,
               private router: Router,
+              private http: HttpClient,
               private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.getRole();
     this.getBooks();
+    this.showMessage();
   }
 
   getRole(): void {
     this.bookService.getRoleById(this.idUser)
       .subscribe((role: Roles) => {
         this.role = role;
+      });
+  }
+
+  addMessage(): void {
+    this.bookService.addMessage(this.idUser, this.myMessage)
+      .subscribe((messages: Message) => {
+        this.message = messages;
+        this.myMessage = "";
+      });
+  }
+
+  showMessage(): void {
+    this.bookService.showMessage(this.idUser)
+      .subscribe((message: Message) => {
+        this.message = message;
       });
   }
 
@@ -73,6 +94,7 @@ export class BooksComponent implements OnInit {
 
   onOver(): void {
     this.books.forEach((book: Book) => book.selected = false);
+    this.selectedBook = null;
   }
 
   ShowNewBook(): void {

@@ -7,7 +7,8 @@
   background-color: rgba(0, 0, 0, 0.47);
 
 }
-.menu{
+
+.menu {
   position: absolute;
   z-index: 99;
   border-bottom: 1px black solid;
@@ -20,7 +21,8 @@
   width: 100%;
   left: 0;
   top: 0;
-  &-button{
+
+  &-button {
     background-color: rgba(131, 21, 0, 0);
     margin-right: 2%;
     border: none;
@@ -28,15 +30,18 @@
     font-size: 25px;
     font-family: 'Lobster';
     outline: none;
-    &:hover{
+
+    &:hover {
       cursor: pointer;
       background-color: rgba(131, 21, 0, 0.69);
     }
-    &-img{
+
+    &-img {
       width: 30px;
     }
   }
 }
+
 .main {
   background-repeat: no-repeat;
   background-size: cover;
@@ -120,9 +125,10 @@
   &-img {
     width: 35%;
     height: 80%;
-    margin: 5% 10% auto 3%;
+    margin: 0 10% auto 3%;
     position: relative;
     text-align: center;
+    top: 11vh;
 
     img {
       height: 100%;
@@ -136,7 +142,31 @@
   background-color: rgba(131, 21, 0, 0.5);
 }
 
-
+.chat-body{
+  width: 90%;
+  height: 90%;
+  background-color: #faeab8;
+  border: 1px black solid;
+  overflow: auto;
+  text-align: left;
+  padding-left:2%;
+  margin-bottom: 2%;
+}
+.chat-send{
+  width: 70%;
+  background-color: #faeab8;
+  border: 1px black solid;
+  height: 7%;
+  margin-left: -6%;
+}
+.chat-button{
+  margin-left: 2%;
+  width: 20%;
+  height: 7%;
+  border: 1px black solid;
+  background-color:rgba(131, 21, 0, 0.3);
+  font-weight: bold;
+}
 .butt {
   width: 25px;
   outline: none;
@@ -219,9 +249,9 @@
   }
 
   .show-container {
-    top:0;
+    top: 0;
     left: 0;
-    margin:5% 5%;
+    margin: 5% 5%;
     height: 90%;
     width: 90%;
   }
