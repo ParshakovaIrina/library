@@ -6,6 +6,7 @@ import {LoginService} from "../login/login.service";
 import {Roles} from "../interfaces/Roles";
 import {Message} from "../interfaces/message";
 import {HttpClient} from '@angular/common/http';
+import {MyUser} from "../interfaces/MyUser";
 
 export type Name = "Library" | "My Books";
 
@@ -25,6 +26,8 @@ export class BooksComponent implements OnInit {
   message: Message;
   flag: boolean;
   myMessage: string;
+  mess: any;
+
 
   constructor(private bookService: BookService,
               private loginService: LoginService,
@@ -37,6 +40,19 @@ export class BooksComponent implements OnInit {
     this.getRole();
     this.getBooks();
     this.showMessage();
+    this.connect();
+  }
+
+  connect(): void {
+    const source = new EventSource("http://localhost:8080/stream");
+    source.addEventListener("message", message => {
+      let n: MyUser; // need to have this Notification model class in angular2
+      n = JSON.parse(message.data);
+      // console.log(message.data);
+      if (this.idUser === n.id) {
+        alert("Ваша библиотека обновлена");
+      }
+    });
   }
 
   getRole(): void {
@@ -73,6 +89,7 @@ export class BooksComponent implements OnInit {
       });
   }
 
+
   getUserBooks(): void {
     this.name = "My Books"
     this.role.addBook = false;
@@ -107,7 +124,10 @@ export class BooksComponent implements OnInit {
 
   addInMyLibr(selectedBook): void {
     this.bookService.addInMyLibr(this.idUser, selectedBook.id)
-      .subscribe();
+      .subscribe(mess => {
+        this.mess = mess;
+        alert(this.mess.mess);
+      });
   }
 
   deleteFromMyLibr(selectedBook): void {

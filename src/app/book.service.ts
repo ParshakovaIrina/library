@@ -31,12 +31,15 @@ export class BookService {
   updateBook(idUser: number, idBook: number, value: UpdateBookRequest): Observable<Book> {
     return this.restService.put(`${this.baseUrl}/detail/${idUser}/${idBook}`, value);
   }
+
   addMessage(idUser: number, value: string): Observable<Message> {
     return this.restService.post(`${this.baseUrl}/message/${idUser}`, value);
   }
+
   showMessage(idUser: number): Observable<Message> {
     return this.restService.get(`${this.baseUrl}/message/${idUser}`);
   }
+
   deleteBook(idBook: number): Observable<any> {
     return this.restService.delete(`${this.baseUrl}/detail/${idBook}`);
   }
@@ -49,7 +52,7 @@ export class BookService {
     return this.restService.get(`${this.baseUrl}/userLibrary/${idUser}`);
   }
 
-  addInMyLibr(idUser: number, value: number): Observable<boolean> {
+  addInMyLibr(idUser: number, value: number): Observable<JSON> {
     return this.restService.post(`${this.baseUrl}/addInMyLibr/${idUser}`, value);
   }
 

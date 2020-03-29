@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from "@angular/core";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../login/login.service";
 import {MyUser} from "../interfaces/MyUser";
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router} from "@angular/router";
 
 export type ButtonName = "Login" | "Register";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.less"]
 })
+
 export class LoginComponent implements OnInit {
   userForm: FormGroup;
   buttonName: ButtonName;
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   errorUser: boolean = true;
   chekLogin: boolean = true;
   goodUser: boolean = false;
+  editMode = true;
 
   constructor(private loginService: LoginService,
               private route: ActivatedRoute,
@@ -38,10 +40,12 @@ export class LoginComponent implements OnInit {
   ClickRegistration(): void {
     this.buttonName = "Register";
     this.chekLogin = true;
+    this.editMode = false;
   }
 
   ClickLogin(): void {
     this.buttonName = "Login";
+    this.editMode = true;
     this.errorUser = true;
     this.goodUser = false;
   }
@@ -60,10 +64,6 @@ export class LoginComponent implements OnInit {
       this.errorUser = chekUser;
       this.goodUser = chekUser;
     });
-
-    // //this.loginService.register(this.userForm.value).subscribe((newUser: MyUser) => {
-    //   this.user = newUser;
-    // });
   }
 
   ngOnInit() {

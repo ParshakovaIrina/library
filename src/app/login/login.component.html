@@ -1,8 +1,8 @@
 <div class="login-background">
   <div class="background-u">
-    <h1 (click)="ClickLogin()" class="go">Вход</h1>
+    <h1 (click)="ClickLogin()" [class._active]="editMode" class="go">Вход</h1>
     <span>/</span>
-    <h1 (click)="ClickRegistration()" class="goo">Регистрация</h1>
+    <h1 (click)="ClickRegistration()" [class._active]="!editMode" class="goo">Регистрация</h1>
 
     <form [formGroup]="userForm" class="rrr">
       <div class="rrrr">
