@@ -1,0 +1,16 @@
+<div class="annotation" *ngIf="annotation"><h1>ВНИМАНИЕ!!!</h1>
+  <div><img src="../../assets/main-book.png "></div>
+  <p class="annotation-text">
+    Это игра, где тебя ждет множество приключений в Заброшенном Замке. Время от времени тебе придется делать выбор.
+    Что принесет он? Успех или поражение? Твои приключения — результат твоего выбора.
+    Тебе самому решать, куда пойти, что сделать.
+    И помни: назад пути нет! Поэтому хорошенько подумай, прежде чем действовать.
+    Игра есть игра: ты можешь проиграть, а можешь и выиграть!
+  </p>
+  <button (click)="GoRead()">Продолжить</button>
+</div>
+<div *ngIf="!annotation">
+<p *ngIf="page" class="annotation-text">{{page.text}}</p>
+  <div *ngIf="page.choiceOne" (click)="nextPage(page.linkOne)">{{page.choiceOne}}</div>
+  <div *ngIf="page.choiceTwo" (click)="nextPage(page.linkTwo)">{{page.choiceTwo}}</div>
+</div>

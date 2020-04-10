@@ -55,6 +55,9 @@ export class BookService {
   addInMyLibr(idUser: number, value: number): Observable<JSON> {
     return this.restService.post(`${this.baseUrl}/addInMyLibr/${idUser}`, value);
   }
+  nextPage(value: number): Observable<any> {
+    return this.restService.post(`${this.baseUrl}/game-book`, value);
+  }
 
   deleteFromMyLibr(idUser: number, idBook: number): Observable<Book[]> {
     return this.restService.delete(`${this.baseUrl}/books/${idUser}/${idBook}`);

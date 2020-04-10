@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Book} from '../interfaces/book';
-import {BookService} from '../book.service';
+import {Component, OnInit} from "@angular/core";
+import {Book} from "../interfaces/book";
+import {BookService} from "../book.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LoginService} from "../login/login.service";
 import {Roles} from "../interfaces/Roles";
 import {Message} from "../interfaces/message";
-import {HttpClient} from '@angular/common/http';
+import {HttpClient} from "@angular/common/http";
 import {MyUser} from "../interfaces/MyUser";
 
 export type Name = "Library" | "My Books";
@@ -27,7 +27,7 @@ export class BooksComponent implements OnInit {
   flag: boolean;
   myMessage: string;
   mess: any;
-
+  alertMess = false;
 
   constructor(private bookService: BookService,
               private loginService: LoginService,
@@ -46,9 +46,8 @@ export class BooksComponent implements OnInit {
   connect(): void {
     const source = new EventSource("http://localhost:8080/stream");
     source.addEventListener("message", message => {
-      let n: MyUser; // need to have this Notification model class in angular2
+      let n: MyUser;
       n = JSON.parse(message.data);
-      // console.log(message.data);
       if (this.idUser === n.id) {
         alert("Ваша библиотека обновлена");
       }
@@ -114,7 +113,7 @@ export class BooksComponent implements OnInit {
     this.selectedBook = null;
   }
 
-  ShowNewBook(): void {
+  ShowCreateBook(): void {
     this.show = !this.show;
   }
 
@@ -126,8 +125,16 @@ export class BooksComponent implements OnInit {
     this.bookService.addInMyLibr(this.idUser, selectedBook.id)
       .subscribe(mess => {
         this.mess = mess;
-        alert(this.mess.mess);
+        // alert(this.mess.mess);
+        this.alertMess = true;
+        setTimeout(() => {
+          this.closeMess();
+        }, 2000);
       });
+  }
+
+  closeMess(): void {
+    this.alertMess = !this.alertMess;
   }
 
   deleteFromMyLibr(selectedBook): void {
@@ -138,7 +145,7 @@ export class BooksComponent implements OnInit {
   }
 
   onChanged(books: Book[]) {
-    this.ShowNewBook();
+    this.ShowCreateBook();
     this.books = books;
   }
 

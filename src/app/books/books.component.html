@@ -9,7 +9,7 @@
     <div class="main-table" (mouseleave)="onOver()">
       <div class="main-table-name">
             <h1 class="main-table-name-text">{{name}}</h1>
-            <button *ngIf="role?.addBook" class="main-table-name-butt" (click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
+            <button *ngIf="role?.addBook" class="main-table-name-butt" (click)="ShowCreateBook()"><img class="main-table-name-butt-img" src="../../assets/plus.svg">
             </button>
       </div>
 
@@ -47,10 +47,13 @@
 
   </div>
   <div class="show-container" *ngIf="show">
-    <button class="bottt"(click)="ShowNewBook()"><img class="main-table-name-butt-img" src="../../assets/delete.svg"></button>
+    <button class="bottt"(click)="ShowCreateBook()"><img class="main-table-name-butt-img" src="../../assets/delete.svg"></button>
     <app-create-book [idUser]="idUser" [books]="books" (onChanged)="onChanged($event)"></app-create-book>
-
   </div>
+  <div  [ngClass]="alertMess==true?'active':'block'">
+    <h1 *ngIf="mess">{{mess.mess}}</h1>
+  </div>
+
 </div>
 
 

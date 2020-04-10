@@ -15,6 +15,7 @@ import { CreateBookComponent } from './create-book/create-book.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import {MyRouteService} from "./services/my-route.service";
+import { GameBookComponent } from './game-book/game-book.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MyRouteService} from "./services/my-route.service";
     EditBookComponent,
     CreateBookComponent,
     AdminPageComponent,
-    EditUserComponent
+    EditUserComponent,
+    GameBookComponent
   ],
   imports: [
     BrowserModule,
